@@ -14,13 +14,16 @@ public class Level : MonoBehaviour
 
     // cached reference
     SceneLoader sceneloader;
+    GameSession gamesession;
+
 
     private void Start()
     {
         sceneloader = FindObjectOfType<SceneLoader>();
+        gamesession = FindObjectOfType<GameSession>();
+        gamesession.ResetLife();
         ballStartPos = ballOne.transform.position;
         Cursor.visible = false;                             // disable cursor on level load
-
     }
 
 

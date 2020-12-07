@@ -15,6 +15,7 @@ public class GameSession : MonoBehaviour
     // state variables
     [SerializeField] int currentScore = 0;
     [SerializeField] int startLife = 3;
+    int currentLife;
 
 
     private void Awake()
@@ -34,7 +35,6 @@ public class GameSession : MonoBehaviour
     private void Start()
     {
         scoreText.text = currentScore.ToString();
-        lifeText.text = startLife.ToString();
     }
 
     // Update is called once per frame
@@ -53,20 +53,27 @@ public class GameSession : MonoBehaviour
     {
         Destroy(gameObject);
     }
+
     public bool IsAutoPlayEnabled()
     {
         return isAutoPlayEnabled;
     }
 
+    public void ResetLife()
+    {
+        currentLife = startLife;
+        lifeText.text = currentLife.ToString();
+    }
+
     public void TakeLife()
     {
-        startLife--;
-        lifeText.text = startLife.ToString();
+        currentLife--;
+        lifeText.text = currentLife.ToString();
     }
 
     public bool GameOverCheck()
     {
-        return startLife <= 0;
+        return currentLife <= 0;
     }
 
 }
